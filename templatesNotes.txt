@@ -1,0 +1,182 @@
+template<typename T>
+now we told the compiler that there will be a template clalled T that
+can be any type...
+Example:
+T const*  max(T const& x, T const& y)
+{
+    return ((x >= y) ? x : y);
+}
+int a = -32;
+int b = 42;
+std::cout << max<int>(a, b); std::endl;  //Explicit initiation
+std::cout << max(a, b) << std::endl;
+
+What are temolate and why we have them in our  code :
+------------------------------------------------------
+
+-> the bad old days - Reuse with Cut-N-Paste
+(Generic Programming)
+Generic programming is a style of computer programming in which 
+algorithms are written in terms of types to-be-specified-later 
+that are then instantiated when needed for specific types provided
+as parameters. This approach, pioneered by ML in 1973,[1][2] 
+permits writing common functions or types that differ only in 
+the set of types on which they operate when used, thus reducing 
+duplication.
+
+C++ supports generic Programming with templates
+
+TEMPLATE CATEGORIES :
+
+1- Function Templates:
+    -> it is like  a recipe for a fucntion
+2- Class Templates
+    -> recipe for making classes.
+3- Member Function Templates:
+    -> recipe for making member functions of t parameter is the address of an array.
+• The second one is the length of the array.
+• The third one is a function that will be call on every element of the array.
+Turn in a main.cpp file that contains your tests. Provide enough code to generate a
+test executable.
+Your iter function template mua classes
+
+Template Fundamentals:
+----------------------
+1 -Template terminology:
+-> the standard treats terms thing template consistently
+    -> template : is the noun, indicating a parametrized description.
+    -> thing is an agdective, specifying the family of things being parametrized.
+
+so we have :
+    this kind of template                  ..is a parametrized description
+                                                of a family of ...
+        -class template                         - classes
+        -func template                          - functions
+        -member func template                   - member functions
+        -alias template                         - type alias
+        -variable template                      - variables
+        -lambda template                        - lambda functions
+
+Translation Units:
+---------------------------
+in c++, translation is performed in nine well-defined stages : 
+
+ * phase 1 to phase 6 perform lexical analysis
+    (thes are pre-processing)
+    (the output of phase 6 is a translation unit)
+
+ * A translation unit is defined as
+    -> a source file
+    -> plus all the headers and source files included via #inlcude directive.
+    -> minus any source lines skipped by conditional pre-processing directives (#ifdef)
+    -> and all macros expanded
+
+ * Phases 7 and 8 perform syntax analysis, semantic analysis, and codegen
+    -> these are what we refer to as compilation
+    -> Templates are parsed in Phase 7
+    -> Template are instantiated in Phase 8.
+    -> the output is called a tranlated translation unit(in other words obj code).
+
+ * Phase 9 performs program image creation
+    -> this is what we usually think of as linking.
+    -> the output is an executable image.
+
+Declaration and Definitions :
+-------------------------------
+An entity is very important it is something that we give a name to inside our program
+    -> value
+    -> object
+    -> reference
+    -> function
+    -> class member
+    -> type
+    -> template
+    -> template specialization
+Entity are important cause we gave them names...
+A name:
+ is the use of an identifier that denotes an entity or label it 
+    -> every name that denotes an entity is introduced by a Declaration
+A Declaration:
+introduces one or more names into a translation unit
+    -> a Declaration may also re-introduce a name into a translition unit
+A Definition:
+is a Declaration that fully defines the entitt parameter is the address of an array.
+• The second one is the length of the array.
+• The third one is a function that will be call on every element of the array.
+Turn in a main.cpp file that contains your tests. Provide enough code to generate a
+test executable.
+Your iter function template muy being introduced
+
+A variable:
+is an entity introduced by the Declaration of an object
+    -> or of a reference other than a non-static data member
+
+Every Declaration is also a Definition, unless:
+-> it is a function declaration without a corresponding Definition of the body.
+-> it is a parameter declaration in a function declaration that is not a Definition.
+-> it is a declaration of a class name without a corresponding Definition.
+-> it is a template parameter.
+-> it is a typedef declaration.
+-> it is using declaration.
+-> it contains the extern specifier.
+examples:
+
+Declaration                                    Definitions
+-----------------                             ----------------
+extern int a;                                extern int a = 0;
+extern const int c;                         extern const int c = 37;
+int f(int);                                 int f(int)
+                                            {
+                                                return x + 1;
+                                            }
+class Foo;                                  class Foo
+                                            {
+                                                int mval;
+                                            public:
+                                                Foo(int x) : mval(x) {}
+                                            }
+
+typedef int Int;                            // no Definition because they are type aliases
+
+template<class T>
+T const& max(T const& a, T const& b); // declaration of function template max
+
+template<class T>
+T const& max(T const& a, T const& b) // Definition of function template max
+{
+    return ((a > b) ? a : b);
+}
+
+template<class T1, class T2>
+struct pair;                    // declaration of a class template
+
+template<class T1, class T2>
+struct pair                     // Definition of a class template
+{
+    T1  first;
+    T2  second;
+    ...
+}
+
+The One-Definition Rule (ODR)
+-----------------------------
+a given translation unit can contain exectly one Definition multiple declarations is okay
+but only one Definition
+
+For an inline variable or an inline function, a definition is required in every
+translation unit that uses it.
+ 
+Templates parameters and template arguments:
+--------------------------------------------
+// Definition of a class template                       
+template<class T1, class T2>
+struct pair                                         
+{
+    T1  first;
+    T2  second;
+    ...
+}
+
+template<class T>
+T const& max(T const& a, T const& b)
+{...}
