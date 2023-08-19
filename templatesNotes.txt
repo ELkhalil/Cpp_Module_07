@@ -180,3 +180,30 @@ struct pair
 template<class T>
 T const& max(T const& a, T const& b)
 {...}
+
+ChatGPT Informations for templaes:
+----------------------------------
+Absolutely! Let's break down that statement into simpler terms:
+
+**Templates are compiled when instantiated with specific types:** 
+Imagine a template as a blueprint for creating functions or classes. 
+When you use this blueprint to make an actual function or class with a 
+specific data type, that's called instantiation. It's like using a cookie-cutter 
+to make cookies of different shapes. The template is the cookie-cutter, 
+and when you use it, you're making cookies of different types.
+
+**Placing them in header files ensures that the compiler can see the definitions 
+at the point of instantiation:** Think of the compiler as a builder. 
+When you use a template to create a function or class, the builder (compiler) 
+needs to know how to build it. The builder looks at the template's design (definition) 
+to build the actual thing (function or class) with the specific type.
+
+If you put the template's design (definition) in a different place, like a separate file, 
+the builder might not know how to build it when it's needed. But if you put the template's 
+design in a place where the builder can easily find it, like a header file, the builder 
+can quickly grab the design and build the thing exactly when you need it.
+
+So, putting templates in header files is like keeping the blueprints where the builder 
+can quickly access them to create the right things at the right time!
+
+The template<typename T> line is used to declare the beginning of a template definition block
