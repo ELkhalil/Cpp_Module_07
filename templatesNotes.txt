@@ -25,7 +25,7 @@ the set of types on which they operate when used, thus reducing
 duplication.
 
 C++ supports generic Programming with templates
-
+-------------------------------------------------
 TEMPLATE CATEGORIES :
 
 1- Function Templates:
@@ -207,3 +207,94 @@ So, putting templates in header files is like keeping the blueprints where the b
 can quickly access them to create the right things at the right time!
 
 The template<typename T> line is used to declare the beginning of a template definition block
+
+Function Overloading :
+-------------------------
+overloading doesn't spare the effort of writing nearly identical code for each nearly identical functions
+but function templates do.
+
+Function template Informations from (Dan Saks - CppCon 2019):
+--------------------------------------------------------------
+is not a function it is just a tool to print a function 
+The art of generating a function definition from a template is called template instantiation.
+A function definition generated from a function template is an instantiated function.
+
+once we call that function (swap<int>(i,j)) the comiler automatically instantiates a definition for a 
+function declared as void swap<int>(int &a, int &b);
+when doing this call the compiler use it as a declaration for that fucntion and create
+a function for that.
+
+In case of a duplicate declaration of the same data types but with different values the
+compiler does not instantiate multiple functions it rather instantiate a single function for 
+all the calls of that type.
+
+Very important:
+----------------
+withing the scope of the class template rational<T>, you can usually refer to the class 
+name as either:
+-> rational 
+-> rational<T>
+
+--> that is, the <T> after the class template name is optional
+--but only in the scope of the class template
+
+for example you can write the class definition as following:
+
+template <typename T>
+class rational
+{
+public:
+    rational();
+    rational(T n);
+    rational (T n, T d);
+    rational& operator+= (rational const& ro);
+    .........
+}
+
+or you can write it like this :
+template <typename T>
+class rational
+{
+public:
+    rational<T>();
+    rational<T>(T n);
+    rational<T> (T n, T d);
+    rational<T>& operator+= (rational<T> const& ro);
+    .........
+}
+
+           (reenter the class scope here)
+rational<T>::operator+=(rational const& ro) {}
+                                <T> here is optional (we are inside the scope ::)                
+        (<T> is not optional outside class template scope)
+
+// why it does not check errors:
+----------------------------------
+in the initial load that the compiler do to the template it does not do much
+it just load it in a symbole table to use it later once we instantiate it 
+and for that it does not do much to errors checking ...
+is there a way we can check for errors early to help us not compile with errors
+well ::
+a compiler processses each template definition in two phases: 
+1 -> the 1st phase occurs when the comiler parses the template declaration
+    -> this happens just once for each template
+2 -> the 2end phase occurs when the compiler instantiate the template for 
+    a particular combination of templae arguments
+    -> this happens at each instantiation.
+
+Template specialization: 
+--------------------------
+when you subsitute a specific combination of arguments for a template's parameters
+you get a specialization.
+    -> the real meaning of a specialization is when u take a template, and take a combination
+    of arguments and pair them together tha's a specialization.
+example:
+    swap T is a generalization of swap but swap int is a specialization that swap integers
+                                           swap float is a specialization that swap float
+
+syntax : 
+    template_name <argument-list>
+it is refered to by a template-id
+for example:
+    swap<int> is template id it names the specialization of the swap template that swaps integers.
+

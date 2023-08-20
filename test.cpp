@@ -22,3 +22,12 @@
 //     it gives u a powerful edge to use the compiler at your edge.
 //     hard to Debug... (you don't know wich type has the problem ..etc)
 // */
+
+#include <iostream>
+
+int main( void )
+{
+    int *a = new int();
+    std::cout << *a << std::endl;
+    return 0;
+}

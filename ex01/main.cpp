@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 18:59:51 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/19 19:38:51 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/20 12:13:15 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,35 @@
 
 int main() 
 {
-    // Test with int array
-    int intArray[] = {1, 2, 3, 4, 5};
-    size_t intArrayLength = sizeof(intArray) / sizeof(intArray[0]);
-    std::cout << "Printing intArray: ";
-    iter(intArray, intArrayLength, print_element<int>);
-    std::cout << std::endl;
+    size_t size = 5;
 
-    // Test with double array
-    double doubleArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
-    size_t doubleArrayLength = sizeof(doubleArray) / sizeof(doubleArray[0]);
-    std::cout << "Printing doubleArray: ";
-    iter(doubleArray, doubleArrayLength, print_element<double>);
-    std::cout << std::endl;
+    // int checks
+    int intArray[size] = {1, 2, 3, 4, 5};
+    std::cout << "Printing the intArray before : " << std::endl;
+    iter(intArray, size, print_value);
+    std::cout << std::endl << "intArray After Multiplication : " << std::endl;
+    iter(intArray, size, multiply_value);
+    iter(intArray, size, print_value);
+    std::cout << std::endl << "-----------" << std::endl;
 
-    // Test with char array
-    char charArray[] = {'a', 'b', 'c', 'd', 'e'};
-    size_t charArrayLength = sizeof(charArray) / sizeof(charArray[0]);
-    std::cout << "Printing charArray: ";
-    iter(charArray, charArrayLength, print_element<char>);
-    std::cout << std::endl;
+    // double checks
+    double doubleArray[size] = {1.10, 2.20, 3.30, 4.40, 5.50};
+    std::cout << "Printing the original doubleArray:" << std::endl;
+    iter(doubleArray, size, print_value);
+    std::cout << std::endl << "doubleArray After Multiplication : " << std::endl;
+    iter(doubleArray, size, multiply_value);
+    iter(doubleArray, size, print_value);
+    std::cout << std::endl << "-----------" << std::endl;
+    
+    // char checks
+    char charArray[size] = {'a', 'b', 'c', 'd', 'e'};
+    std::cout << "Printing the charArray :" << std::endl;
+    iter(charArray, size, print_value);
 
-    // Test with string array
-    std::string stringArray[] = {"apple", "banana", "cherry", "date", "elderberry"};
-    size_t stringArrayLength = sizeof(stringArray) / sizeof(stringArray[0]);
-    std::cout << "Printing stringArray: ";
-    iter(stringArray, stringArrayLength, print_element<std::string>);
-    std::cout << std::endl;
+    // char checks
+    std::string stringArray[size] = {"hello", "world", "this", "is", "a test"};
+    std::cout << std::endl << "Printing the stringArray:" << std::endl;
+    iter(stringArray, size, print_value);
+
     return 0;
 }

@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/19 19:30:23 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/20 12:04:52 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/20 12:40:21 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/20 12:52:30 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include <iostream>
 
 template<typename T>
-void    iter(T *array, size_t length, void (*f)(T &arg))
+class   Array
 {
-    if (!array || length == 0)
-        return ;
-    size_t i = 0;
-    while (i < length)
-        f(array[i++]);
+public:
+    Array   ( void );
+    Array   ( unsigned int n);
+    Array   ( Array const& other);
+    Array&  operator=( Array const& other);
+    ~Array  ( void);
+private:
+    T*      array;
+    size_t  size;
 }
 
-template<typename T>
-void    multiply_value(T &value)
-{
-    value *= value;
-}
-
-template<typename T>
-void    print_value(T &value)
-{
-    std::cout << value << " ";
-}
 #endif

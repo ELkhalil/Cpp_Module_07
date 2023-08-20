@@ -6,12 +6,12 @@
 #    By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/17 15:41:27 by aelkhali          #+#    #+#              #
-#    Updated: 2023/08/20 12:38:05 by aelkhali         ###   ########.fr        #
+#    Updated: 2023/08/20 12:38:35 by aelkhali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Output Program Name
-NAME = test
+NAME = Array
 
 # Colors :
 GREEN = \033[0;32m
