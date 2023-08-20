@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/19 19:30:23 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/20 12:04:52 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/20 22:19:21 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 
 template<typename T>
-void    iter(T *array, size_t length, void (*f)(T &arg))
+void    iter(T *array, size_t length, void (*f)(T& arg))
 {
     if (!array || length == 0)
         return ;
