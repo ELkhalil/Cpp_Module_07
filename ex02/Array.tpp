@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/20 18:31:41 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/20 22:32:26 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/20 22:41:59 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 // Array<T> Constructors
 template<typename T>
-Array<T>::Array( void ) : _array(new T[0]), _size(0) {}
+Array<T>::Array( void ) : _array(NULL), _size(0) {}
 
 template<typename T>
 Array<T>::Array( Array const& other )
